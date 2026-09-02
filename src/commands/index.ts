@@ -74,6 +74,10 @@ import {
     mensagensCommand
 } from './mensagens.js';
 
+import {
+    boostCommand
+} from './boost.js';
+
 
 export const commandList = [
 
@@ -90,6 +94,8 @@ export const commandList = [
     ajudaCommand,
 
     mensagensCommand,
+
+    boostCommand,
 
 
     /*
@@ -148,13 +154,6 @@ export type BotCommand =
         /*
         |--------------------------------------------------------------------------
         | COMPATIBILIDADE
-        |--------------------------------------------------------------------------
-        |
-        | Alguns comandos antigos ainda possuem staffOnly.
-        |
-        | A autorização real agora é controlada centralmente
-        | por checkCommandPermission().
-        |
         |--------------------------------------------------------------------------
         */
 

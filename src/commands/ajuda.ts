@@ -84,7 +84,7 @@ const COMMAND_HELP:
 
             '/ajuda categoria:moderação',
 
-            '/ajuda comando:mutar'
+            '/ajuda comando:boost'
         ],
 
         access:
@@ -200,6 +200,55 @@ const COMMAND_HELP:
             'O editor de regras permite alterar título, texto, footer, cor HEX e imagem por URL.',
 
             'Após editar as regras, utilize /regras publicar ou /regras atualizar para refletir a configuração na mensagem oficial.'
+        ]
+    },
+
+
+    boost: {
+
+        title:
+            '/boost',
+
+        summary:
+            'Configura, publica e atualiza a mensagem de benefícios para boosters do servidor.',
+
+        usage:
+            [
+                '/boost editar',
+                '/boost status',
+                '/boost publicar canal:<canal>',
+                '/boost atualizar'
+            ].join(
+                '\n'
+            ),
+
+        examples: [
+
+            '/boost editar',
+
+            '/boost status',
+
+            '/boost publicar canal:#boost',
+
+            '/boost atualizar'
+        ],
+
+        access:
+            'Requer a permissão Administrador.',
+
+        notes: [
+
+            'O editor permite alterar título, texto, footer, cor HEX e imagem por URL.',
+
+            'O texto aceita Markdown do Discord.',
+
+            'Deixar título, footer ou imagem vazios remove o respectivo elemento.',
+
+            '/boost status mostra a configuração salva e uma prévia do embed.',
+
+            'Depois da primeira publicação, utilize /boost atualizar para editar a mesma mensagem.',
+
+            'A mensagem publicada é fixada automaticamente.'
         ]
     },
 
@@ -916,7 +965,12 @@ function generalHelpEmbed():
                         '`/mensagens regras editar` — Administrador',
                         '`/mensagens regras status` — Administrador',
                         '',
-                        'Boas-vindas podem ser texto normal ou embed. As regras possuem editor completo de embed.'
+                        '`/boost editar` — Administrador',
+                        '`/boost status` — Administrador',
+                        '`/boost publicar` — Administrador',
+                        '`/boost atualizar` — Administrador',
+                        '',
+                        'Boas-vindas, regras e mensagem de boost possuem configuração própria.'
                     ].join(
                         '\n'
                     )
@@ -983,6 +1037,7 @@ function generalHelpEmbed():
                 value:
                     [
                         '`/mensagens` → Administrador',
+                        '`/boost` → Administrador',
                         '`/moderacao` → Administrador',
                         '`/ticket` → Administrador',
                         '`/regras` → Administrador',
@@ -1124,7 +1179,7 @@ function messagesHelpEmbed():
         )
 
         .setDescription(
-            'Configuração das boas-vindas automáticas e da mensagem oficial de regras.'
+            'Configuração das boas-vindas automáticas, regras e mensagem de benefícios de boost.'
         )
 
         .addFields(
@@ -1216,6 +1271,31 @@ function messagesHelpEmbed():
                         'Se ela já estiver publicada, use `/regras atualizar` para editar a mesma mensagem.',
                         '',
                         'A mensagem de regras é fixada automaticamente.'
+                    ].join(
+                        '\n'
+                    )
+            },
+
+            {
+
+                name:
+                    '🚀 Mensagem de Boost',
+
+                value:
+                    [
+                        '`/boost editar` — abre o editor completo do embed.',
+                        '`/boost status` — mostra a configuração e uma prévia.',
+                        '`/boost publicar` — publica a mensagem em um canal.',
+                        '`/boost atualizar` — atualiza a mensagem já publicada.',
+                        '',
+                        'O editor permite alterar:',
+                        '• título;',
+                        '• texto;',
+                        '• footer;',
+                        '• cor HEX;',
+                        '• imagem por URL.',
+                        '',
+                        '**Permissão:** Administrador.'
                     ].join(
                         '\n'
                     )
@@ -1632,6 +1712,15 @@ export const ajudaCommand = {
 
                                 value:
                                     'mensagens'
+                            },
+
+                            {
+
+                                name:
+                                    'boost',
+
+                                value:
+                                    'boost'
                             },
 
                             {
