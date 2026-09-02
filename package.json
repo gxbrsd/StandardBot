@@ -9,7 +9,8 @@
     "start": "tsx src/index.ts",
     "typecheck": "tsc --noEmit",
     "deploy": "tsx src/deploy-commands.ts",
-    "deploy:global": "tsx src/deploy-commands.ts --global"
+    "deploy:global": "tsx src/deploy-commands.ts --global",
+    "check": "tsc --noEmit"
   },
   "keywords": [
     "discord",
